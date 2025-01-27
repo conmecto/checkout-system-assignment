@@ -11,18 +11,16 @@ const productsData = [
 ];
 
 const discountData = [
-    { type: "bulk", sku: "ipd", threshold: 4, discountedPrice: 499.99 },
-    { type: "bundle", sku: "atv", bundleSize: 3, quantityPaidForBundleSize: 2 }
+    { type: "bulk", sku: "ipd", bulkProps: { threshold: 4, discountedPrice: 499.99 } },
+    { type: "bundle", sku: "atv", bundleProps: { bundleSize: 3, quantityPaidForBundleSize: 2 } }
 ];
 
 const products = productsData.map(
     ({ sku, name, price }) => new Product(sku, name, price)
 );
 
-const discounts = discountData.map(
-    ({ type, sku, threshold, discountedPrice, bundleSize, quantityPaidForBundleSize }) => new Discount(
-        type, sku, bundleSize, quantityPaidForBundleSize, threshold, discountedPrice
-    )
+const discounts = discountData.map(({ type, sku, bulkProps, bundleProps }) => 
+    new Discount(type, sku, bulkProps, bundleProps)
 );
 
 const pricingRuleService = new PricingRuleService();

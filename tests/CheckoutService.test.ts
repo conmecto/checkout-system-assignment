@@ -14,14 +14,18 @@ const discounts: Discount[] = [
     {
         type: "bulk",
         sku: "ipd",
-        threshold: 5,
-        discountedPrice: 12,
+        bulkProps: {
+            threshold: 5,
+            discountedPrice: 12,
+        }
     },
     {
         type: "bundle",
         sku: "atv",
-        bundleSize: 4,
-        quantityPaidForBundleSize: 3, 
+        bundleProps: {
+            bundleSize: 4,
+            quantityPaidForBundleSize: 3
+        }
     },
 ];
 

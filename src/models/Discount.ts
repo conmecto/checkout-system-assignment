@@ -1,19 +1,25 @@
+interface BundleDiscountProps {
+    bundleSize: number
+    quantityPaidForBundleSize: number
+}
+
+interface BulkDiscountProps {
+    threshold: number
+    discountedPrice: number
+}
+
 interface DiscountInterface {
     type: string;
     sku: string;
-    bundleSize?: number;
-    quantityPaidForBundleSize?: number;
-    threshold?: number;
-    discountedPrice?: number;
+    bulkProps?: BulkDiscountProps
+    bundleProps?: BundleDiscountProps
 }
 
 export class Discount implements DiscountInterface {
     constructor(
         public type: string,
         public sku: string,
-        public bundleSize?: number,
-        public quantityPaidForBundleSize?: number,
-        public threshold?: number,
-        public discountedPrice?: number
+        public bulkProps?: BulkDiscountProps,
+        public bundleProps?: BundleDiscountProps
     ) {}
 }

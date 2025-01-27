@@ -7,9 +7,10 @@ export class BulkPricingRule implements PricingRule {
         productPrices: Map<string, number>,
         discount: Discount
     ): number {
+        const props = discount.bulkProps;
         const count = items.get(discount.sku) || 0;
-        const price = count > (discount.threshold || 0) 
-            ? discount.discountedPrice! 
+        const price = count > (props.threshold || 0) 
+            ? props.discountedPrice! 
             : productPrices.get(discount.sku)!;
         return count * price;
     }
